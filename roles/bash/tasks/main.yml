@@ -1,0 +1,42 @@
+---
+- name: Ensure Bash is installed [Arch]
+  become: true
+  when: ansible_distribution == 'Archlinux'
+  community.general.pacman:
+    name: bash
+    state: installed
+
+- name: Ensure Bash is installed [Non-Arch]
+  become: true
+  when: not ansible_distribution == 'ArchLinux'
+  package:
+    name: bash
+    state: installed
+
+- name: Set Bash as this user's current shell
+  become: true
+  command: chsh -s /bin/bash {{ lookup('env', 'USER') }}
+  register: bash_for_user
+  failed_when: bash_for_user.rc >= 1
+  changed_when: bash_for_user.rc == 0
+
+- name: Install custom bashrc
+  file:
+    src: "{{ lookup('env', 'ROOTDIR') }}/roles/bash/files/bashrc.bash"
+    dest: "{{ lookup('env', 'HOME') }}/.bashrc"
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+    state: link
+    force: true
+    follow: false
+
+- name: Install custom aliases
+  file:
+    src: "{{ lookup('env', 'ROOTDIR') }}/roles/bash/files/aliases.bash"
+    dest: "{{ lookup('env', 'HOME') }}/.aliases"
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+    state: link
+    force: true
+    follow: false
+

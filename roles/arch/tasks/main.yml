@@ -1,0 +1,22 @@
+---
+- name: Install font packages
+  become: true
+  community.general.pacman:
+    name: noto-fonts-emoji,nerd-fonts-cascadia-code
+    state: installed
+
+- name: Configure fontconfig
+  file:
+    src: "{{ lookup('env', 'ROOTDIR') }}/roles/arch/files/{{ item }}"
+    dest: "{{ lookup('env', 'HOME') }}/.config/fontconfig/{{ item }}"
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+    state: link
+    force: true
+    follow: false
+  with_items:
+    - 'fonts.conf'
+    - 'fontconfig.conf'
+
+- name: Refresh fontconfig cache
+  command: fc-cache -fv
