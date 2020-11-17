@@ -1,0 +1,33 @@
+---
+- name: Download Nix installer
+  get_url:
+    url: https://nixos.org/nix/install
+    dest: /tmp/nix.sh
+    mode: 0744
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+
+- name: Install Nix
+  command:
+    cmd: sh /tmp/nix.sh
+    creates: /nix
+
+- name: Clone nvim
+  git:
+    clone: true
+    repo: 'https://github.com/hbjydev/nvim.git'
+    dest: '/tmp/nvim'
+
+- name: Build nvim
+  command:
+    cmd: '/nix/var/nix/profiles/default/bin/nix-env -if default.nix'
+    chdir: '/tmp/nvim'
+
+- name: Clean up
+  file:
+    state: absent
+    path: '/tmp/{{ item }}'
+  with_items:
+    - 'nix.sh'
+    - 'nvim'
+
