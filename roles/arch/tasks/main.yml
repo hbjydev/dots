@@ -1,4 +1,9 @@
 ---
+- name: Install miscellaneous packages
+  become: true
+  community.general.pacman:
+    name: aria2,atool,base-devel,bat,bind,curl,fzf,htop,inetutils,iotop,jq,lshw,man-db,man-pages,mlocate,mtr,ripgrep,rsync,wget,xclip
+
 - name: Install font packages
   become: true
   community.general.pacman:
