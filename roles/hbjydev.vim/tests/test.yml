@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - role: hbjydev.vim
+      vars:
+        deploy_to_users:
+          - root

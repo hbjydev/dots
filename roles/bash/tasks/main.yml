@@ -1,14 +1,6 @@
 ---
-- name: Ensure Bash is installed [Arch]
+- name: Ensure Bash is installed
   become: true
-  when: ansible_distribution == 'Archlinux'
-  community.general.pacman:
-    name: bash
-    state: installed
-
-- name: Ensure Bash is installed [Non-Arch]
-  become: true
-  when: not ansible_distribution == 'ArchLinux'
   package:
     name: bash
     state: installed
@@ -20,22 +12,30 @@
   failed_when: bash_for_user.rc >= 1
   changed_when: bash_for_user.rc == 0
 
+- name: Install base16 shell customization
+  git:
+    dest: "{{ ansible_env.HOME }}/.config/base16-shell"
+    repo: "https://github.com/chriskempson/base16-shell.git"
+    clone: true
+    update: true
+    recursive: false
+
 - name: Install custom bashrc
   file:
-    src: "{{ lookup('env', 'ROOTDIR') }}/roles/bash/files/bashrc.bash"
-    dest: "{{ lookup('env', 'HOME') }}/.bashrc"
-    owner: "{{ lookup('env', 'USER') }}"
-    group: "{{ lookup('env', 'USER') }}"
+    src: "{{ role_path }}/files/bashrc.bash"
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: link
     force: true
     follow: false
 
 - name: Install custom aliases
   file:
-    src: "{{ lookup('env', 'ROOTDIR') }}/roles/bash/files/aliases.bash"
-    dest: "{{ lookup('env', 'HOME') }}/.aliases"
-    owner: "{{ lookup('env', 'USER') }}"
-    group: "{{ lookup('env', 'USER') }}"
+    src: "{{ role_path }}/files/aliases.bash"
+    dest: "{{ ansible_env.HOME }}/.aliases"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: link
     force: true
     follow: false

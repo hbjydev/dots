@@ -1,7 +1,8 @@
 ---
-- name: Set up local workstation
-  hosts: local
+- hosts: local
+
   roles:
-    - arch
     - bash
-    - nvim
+    - fonts
+    - vim
+    - packages

@@ -1,0 +1,5 @@
+---
+- hosts: all
+  roles:
+    - kewlfft.aur
+    - yay_role
