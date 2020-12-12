@@ -1,0 +1,16 @@
+---
+- name: Install required packages
+  become: true
+  package:
+    name: fzf,git,vim
+    state: installed
+
+- name: Install Node.js for Coc.nvim
+  become: true
+  shell: |
+    which node || curl -sL install-node.now.sh/lts | sh -s -- -y
+
+- loop: '{{ deploy_to_users }}'
+  block:
+    - include: install.yml
+

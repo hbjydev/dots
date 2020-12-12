@@ -1,0 +1,3 @@
+---
+deploy_to_users:
+- '{{ ansible_env.USER }}'

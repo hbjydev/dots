@@ -14,11 +14,9 @@ alias pkill="pkill --full"
 alias l="ls -lahXF --group-directories-first"
 
 # nvim
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
-alias vo="nvim -o (fzf)"
-alias vv="nvim -U none"
+alias v="vim"
+alias vi="vim"
+alias nvim="vim"
 
 # rsync
 alias r="rsync -ra --info=progress2"

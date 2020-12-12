@@ -1,0 +1,22 @@
+---
+- name: Install font packages
+  become: true
+  community.general.pacman:
+    name: noto-fonts-emoji,nerd-fonts-cascadia-code
+    state: installed
+
+- name: Configure fontconfig
+  file:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/fontconfig/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    state: link
+    force: true
+    follow: false
+  with_items:
+    - 'fonts.conf'
+    - 'fontconfig.conf'
+
+- name: Refresh fontconfig cache
+  command: fc-cache -fv

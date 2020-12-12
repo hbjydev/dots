@@ -1,3 +1,10 @@
 ---
+roles:
+  - src: https://github.com/hbjydev/yay
+    version: patch-1
+    name: yay_role
+  - 'kewlfft.aur'
+#  - 'jonsible.yay'
+
 collections:
   - 'community.general'
