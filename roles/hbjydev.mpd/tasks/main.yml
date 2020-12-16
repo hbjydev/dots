@@ -13,9 +13,10 @@
     - '.local/share/mpd'
     - '.local/share/mpd/playlists'
     - '.config/mpd'
-    - 'music'
+    - 'mus'
 
 - name: Install MPD config
   copy:
     src: mpd.conf
     dest: "{{ ansible_env.HOME }}/.config/mpd/mpd.conf"
+
