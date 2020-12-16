@@ -10,7 +10,6 @@
   shell: |
     which node || curl -sL install-node.now.sh/lts | sh -s -- -y
 
-- loop: '{{ deploy_to_users }}'
-  block:
-    - include: install.yml
+- with_items: "{{ deploy_to_users }}"
+  include: install.yml
 

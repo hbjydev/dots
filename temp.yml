@@ -1,5 +1,18 @@
 ---
 - hosts: all
+  become: true
+  tasks:
+  - package:
+      name: '@workstation-product-environment'
+
+- hosts: all
   roles:
-    - kewlfft.aur
-    - yay_role
+    - role: fonts
+    - role: hbjydev.gnome
+    - role: hbjydev.bash
+    - role: hbjydev.vim
+      vars:
+        deploy_to_users: [ hayden ]
+    - role: hbjydev.gh-cli
+    - role: hbjydev.mpd
+      tags: mpd
