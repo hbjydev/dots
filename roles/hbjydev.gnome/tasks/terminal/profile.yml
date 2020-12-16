@@ -1,0 +1,7 @@
+---
+- name: Set profile name
+  become: false
+  community.general.dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/{{profileid}}visible-name"
+    value: "'hbjy-trm'"
+

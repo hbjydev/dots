@@ -22,7 +22,7 @@
     clone: true
     update: true
     recursive: false
-  with_items: '{{ vim_plugins }}'
+  with_items: '{{ plugins }}'
 
 - name: Deploy vimrc
   copy:

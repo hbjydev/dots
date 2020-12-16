@@ -1,0 +1,8 @@
+---
+- name: Install python-psutil
+  become: true
+  package:
+    name: python-psutil
+    state: present
+
+- include: terminal/main.yml

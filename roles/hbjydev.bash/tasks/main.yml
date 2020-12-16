@@ -2,12 +2,19 @@
 - name: Ensure Bash is installed
   become: true
   package:
-    name: bash
+    name: bash,bash-completion
+    state: installed
+
+- name: Install util-linux-user [Fedora]
+  become: true
+  when: ansible_distribution == 'Fedora'
+  package:
+    name: util-linux-user
     state: installed
 
 - name: Set Bash as this user's current shell
   become: true
-  command: chsh -s /bin/bash {{ lookup('env', 'USER') }}
+  command: chsh -s /bin/bash {{ ansible_user }}
   register: bash_for_user
   failed_when: bash_for_user.rc >= 1
   changed_when: bash_for_user.rc == 0
@@ -21,22 +28,18 @@
     recursive: false
 
 - name: Install custom bashrc
-  file:
+  copy:
     src: "{{ role_path }}/files/bashrc.bash"
     dest: "{{ ansible_env.HOME }}/.bashrc"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
-    state: link
     force: true
-    follow: false
 
 - name: Install custom aliases
-  file:
+  copy:
     src: "{{ role_path }}/files/aliases.bash"
     dest: "{{ ansible_env.HOME }}/.aliases"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
-    state: link
     force: true
-    follow: false
 
