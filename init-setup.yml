@@ -1,0 +1,35 @@
+---
+- hosts: all
+  roles:
+    - role: hbjydev.packages
+      tags:
+        - packages
+        - shell
+        - desktop
+    - role: hbjydev.fonts
+      tags:
+        - fonts
+        - desktop
+    - role: hbjydev.gnome
+      tags:
+        - gnome
+        - desktop
+    - role: hbjydev.bash
+      tags:
+        - bash
+        - shell
+    - role: hbjydev.vim
+      tags:
+        - editor
+        - shell
+      vars:
+        deploy_to_users: [ hayden ]
+    - role: hbjydev.gh-cli
+      tags:
+        - gh-cli
+        - shell
+    - role: hbjydev.mpd
+      tags:
+        - mpd
+        - desktop
+
