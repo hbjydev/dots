@@ -1,9 +1,3 @@
 ---
-roles:
-  - src: https://github.com/hbjydev/yay
-    version: patch-1
-    name: yay_role
-  - 'kewlfft.aur'
-
 collections:
   - 'community.general'
