@@ -1,0 +1,27 @@
+---
+- name: Ensure MPD is installed
+  become: true
+  package:
+    name: mpd
+    state: installed
+
+- name: Ensure MPD directories exist
+  file:
+    path: '{{ ansible_env.HOME }}/{{ item }}'
+    state: directory
+    owner: '{{ ansible_env.USER }}'
+    group: '{{ ansible_env.USER }}'
+    mode: 0700
+  loop:
+    - '.local/share/mpd'
+    - '.local/share/mpd/playlists'
+    - '.config/mpd'
+    - 'mus'
+
+- name: Install MPD config
+  copy:
+    src: mpd.conf
+    dest: "{{ ansible_env.HOME }}/.config/mpd/mpd.conf"
+    owner: '{{ ansible_env.USER }}'
+    group: '{{ ansible_env.USER }}'
+    mode: 0700

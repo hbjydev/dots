@@ -1,0 +1,6 @@
+---
+- name: Install miscellaneous packages
+  become: true
+  when: ansible_distribution == 'Archlinux'
+  community.general.pacman:
+    name: "{{ packages_arch }}"

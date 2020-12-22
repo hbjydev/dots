@@ -1,0 +1,17 @@
+---
+- name: Install required packages
+  become: true
+  package:
+    name: fzf,git,vim
+    state: installed
+
+- name: Check if Node.js is installed
+  command: which node
+  register: node_installed
+  ignore_errors: true
+  changed_when: node_installed.rc != 0
+  notify:
+  - Install Node.js LTS
+
+- with_items: "{{ deploy_to_users }}"
+  include: install.yml
