@@ -1,0 +1,21 @@
+---
+- name: 'Install GitHub CLI Yum Repo'
+  when: ansible_facts['os_family'] == 'RedHat'
+  become: true
+  get_url:
+    url: 'https://cli.github.com/packages/rpm/gh-cli.repo'
+    dest: '/etc/yum.repos.d/gh-cli.repo'
+
+- name: 'Install GitHub CLI [Fedora]'
+  when: ansible_distribution != 'Archlinux'
+  become: true
+  package:
+    name: 'gh'
+    state: 'present'
+
+- name: 'Install GitHub CLI [Arch Linux]'
+  when: ansible_distribution == 'Archlinux'
+  become: true
+  package:
+    name: 'github-cli'
+    state: 'present'

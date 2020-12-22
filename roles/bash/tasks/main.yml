@@ -1,0 +1,47 @@
+---
+- name: Ensure Bash is installed
+  become: true
+  package:
+    name: bash,bash-completion
+    state: installed
+
+- name: Install util-linux-user [Fedora]
+  become: true
+  when: ansible_distribution == 'Fedora'
+  package:
+    name: util-linux-user
+    state: installed
+
+- name: Set Bash as this user's current shell
+  become: true
+  command: chsh -s /bin/bash {{ ansible_env.USER }}
+  register: bash_for_user
+  failed_when: bash_for_user.rc >= 1
+  changed_when: bash_for_user.rc == 0
+
+- name: Install base16 shell customization
+  git:
+    dest: "{{ ansible_env.HOME }}/.config/base16-shell"
+    repo: "https://github.com/chriskempson/base16-shell.git"
+    version: 'ce8e1e540367ea83cc3e01eec7b2a11783b3f9e1'
+    clone: true
+    update: true
+    recursive: false
+
+- name: Install custom bashrc
+  copy:
+    src: "{{ role_path }}/files/bashrc.bash"
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: 0644
+    force: true
+
+- name: Install custom aliases
+  copy:
+    src: "{{ role_path }}/files/aliases.bash"
+    dest: "{{ ansible_env.HOME }}/.aliases"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: 0644
+    force: true

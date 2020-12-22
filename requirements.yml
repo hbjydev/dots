@@ -4,7 +4,6 @@ roles:
     version: patch-1
     name: yay_role
   - 'kewlfft.aur'
-#  - 'jonsible.yay'
 
 collections:
   - 'community.general'

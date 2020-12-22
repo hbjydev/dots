@@ -1,0 +1,13 @@
+---
+- name: Install Node.js LTS
+  become: true
+  block:
+    - name: Download Node.js LTS install script
+      get_url:
+        url: install-node.now.sh/lts
+        dest: /tmp/install-node
+
+    - name: Install Node.js LTS
+      become: true
+      when: node_installed.changed
+      command: sh -s /tmp/install-node -y

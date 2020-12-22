@@ -1,0 +1,10 @@
+---
+- name: Configure gnome-terminal
+  become_user: "{{ ansible_env.USER }}"
+  community.general.dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/{{ profileid }}{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - { key: 'font', value: "'CaskaydiaCove Nerd Font Mono 10'" }
+    - { key: 'use-system-font', value: "'false'" }

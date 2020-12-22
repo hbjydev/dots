@@ -1,0 +1,51 @@
+---
+- name: Install Noto Emoji fonts [Arch]
+  become: true
+  when: ansible_distribution == 'ArchLinux'
+  community.general.pacman:
+    name: noto-fonts-emoji
+    state: installed
+
+- name: Install Noto Emoji fonts [Fedora]
+  become: true
+  when: ansible_distribution == 'Fedora'
+  ansible.builtin.package:
+    name: google-noto-emoji-color-fonts
+
+- name: Ensure ~/.local/share/fonts/CascadiaCode exists
+  file:
+    state: directory
+    path: "{{ ansible_env.HOME }}/.local/share/fonts/CascadiaCode"
+    mode: 0700
+
+- name: Download CaskaydiaCove fonts
+  register: font_installed
+  unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip
+    remote_src: true
+    dest: ~/.local/share/fonts/CascadiaCode
+  notify:
+    - fc-cache
+
+- name: Ensure ~/.config/fontconfig exists
+  file:
+    state: directory
+    path: "{{ ansible_env.HOME }}/.config/fontconfig"
+    mode: 0700
+  notify:
+    - fc-cache
+
+- name: Configure fontconfig
+  file:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/fontconfig/{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    state: link
+    force: true
+    follow: false
+  loop:
+    - 'fonts.conf'
+    - 'fontconfig.conf'
+  notify:
+    - fc-cache
