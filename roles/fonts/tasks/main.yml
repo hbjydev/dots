@@ -13,11 +13,13 @@
     name: google-noto-emoji-color-fonts
 
 - name: Ensure ~/.local/share/fonts/CascadiaCode exists
+  when: ansible_distribution != "ArchLinux"
   file:
     state: directory
     path: "{{ ansible_env.HOME }}/.local/share/fonts/CascadiaCode"
 
 - name: Download CaskaydiaCove fonts
+  when: ansible_distribution != "ArchLinux"
   unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip
     remote_src: true
@@ -37,7 +39,7 @@
     state: link
     force: true
     follow: false
-  with_items:
+  loop:
     - 'fonts.conf'
     - 'fontconfig.conf'
 
