@@ -44,6 +44,5 @@ esac
 
 # Include secrets (shhh)
 [[ -f $HOME/.secrets ]] && source $HOME/.secrets
-alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 
-which gh && eval "$(gh completion -s bash)"
+[[ which gh ]] && eval "$(gh completion -s bash)"

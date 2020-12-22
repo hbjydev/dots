@@ -1,8 +1,0 @@
----
-- hosts: local
-
-  roles:
-    - bash
-    - fonts
-    - vim
-    - packages

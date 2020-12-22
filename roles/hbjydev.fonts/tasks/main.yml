@@ -34,8 +34,8 @@
   file:
     src: "{{ role_path }}/files/{{ item }}"
     dest: "{{ ansible_env.HOME }}/.config/fontconfig/{{ item }}"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
     state: link
     force: true
     follow: false

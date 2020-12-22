@@ -14,7 +14,7 @@
 
 - name: Set Bash as this user's current shell
   become: true
-  command: chsh -s /bin/bash {{ ansible_user }}
+  command: chsh -s /bin/bash {{ ansible_env.USER }}
   register: bash_for_user
   failed_when: bash_for_user.rc >= 1
   changed_when: bash_for_user.rc == 0
@@ -31,15 +31,15 @@
   copy:
     src: "{{ role_path }}/files/bashrc.bash"
     dest: "{{ ansible_env.HOME }}/.bashrc"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
     force: true
 
 - name: Install custom aliases
   copy:
     src: "{{ role_path }}/files/aliases.bash"
     dest: "{{ ansible_env.HOME }}/.aliases"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
     force: true
 
