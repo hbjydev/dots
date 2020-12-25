@@ -1,9 +1,9 @@
 ---
-- name: Install Noto Emoji fonts [Arch]
+- name: Install misc fonts [Arch]
   become: true
   when: ansible_distribution == 'ArchLinux'
   community.general.pacman:
-    name: noto-fonts-emoji
+    name: noto-fonts-emoji,adobe-source-han-serif-jp-fonts,adobe-source-han-sans-jp-fonts,otf-ipafont
     state: installed
 
 - name: Install Noto Emoji fonts [Fedora]

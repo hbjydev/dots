@@ -4,3 +4,11 @@
   when: ansible_distribution == 'Archlinux'
   community.general.pacman:
     name: "{{ packages_arch }}"
+    state: present
+
+- name: Remove miscellaneous packages
+  become: true
+  when: ansible_distribution == 'Archlinux'
+  community.general.pacman:
+    name: "{{ packages_remove_arch }}"
+    state: absent
