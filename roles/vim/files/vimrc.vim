@@ -45,6 +45,9 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
+" Shortcut to quit
+nnoremap <leader>q :q<CR>
+
 " Quick vertical resizing
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
@@ -62,6 +65,16 @@ nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 vnoremap <Tab> >>
 vnoremap <S-Tab> <<
+
+map $ <Nop>
+map ^ <Nop>
+map { <Nop>
+map } <Nop>
+
+noremap K     {
+noremap J     }
+noremap H     ^
+noremap L     $
 
 inoremap <S-Tab> <Esc>
 onoremap <S-Tab> <Esc>
