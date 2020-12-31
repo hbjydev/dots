@@ -9,25 +9,19 @@ plugins:
   url: https://github.com/leafgarland/typescript-vim
 - name: coc-nvim
   url: https://github.com/neoclide/coc.nvim
-- name: undotree
-  url: https://github.com/mbbill/undotree
-- name: nerdtree
-  url: https://github.com/preservim/nerdtree
 - name: fzf
   url: https://github.com/junegunn/fzf
 - name: fzf-vim
   url: https://github.com/junegunn/fzf.vim
 - name: editorconfig-vim
   url: https://github.com/editorconfig/editorconfig-vim
-- name: vim-devicons
-  url: https://github.com/ryanoasis/vim-devicons
 - name: goyo-vim
   url: https://github.com/junegunn/goyo.vim
 - name: lightline-vim
   url: https://github.com/itchyny/lightline.vim
-- name: vim-nix
-  url: https://github.com/LnL7/vim-nix
 - name: base16-vim
   url: https://github.com/chriskempson/base16-vim
 - name: 'base16-lightline'
   url: https://github.com/mike-hearn/base16-vim-lightline
+- name: vim-floaterm
+  url: https://github.com/voldikss/vim-floaterm

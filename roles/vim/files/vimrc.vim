@@ -19,11 +19,13 @@ set undofile
 set incsearch
 set nocompatible
 set termguicolors
-filetype plugin on
 set hidden
 set cmdheight=2
 set updatetime=300
 set shortmess+=c
+set noshowmode
+
+filetype plugin on
 
 if has('patch-8.1.1564')
   set signcolumn=number
@@ -43,10 +45,7 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-" Shortcut to quit
-nnoremap <leader>q :q<CR>
-
-" Quick resizing
+" Quick vertical resizing
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
@@ -63,16 +62,6 @@ nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 vnoremap <Tab> >>
 vnoremap <S-Tab> <<
-
-map $ <Nop>
-map ^ <Nop>
-map { <Nop>
-map } <Nop>
-
-noremap K     {
-noremap J     }
-noremap H     ^
-noremap L     $
 
 inoremap <S-Tab> <Esc>
 onoremap <S-Tab> <Esc>
@@ -187,7 +176,7 @@ let g:lightline = {}
 let g:lightline.colorscheme='base16_ocean'
 let g:lightline.active = {}
 let g:lightline.active.left = [ [ 'mode' ], [], [ 'cocstatus' ] ]
-let g:lightline.active.right = [ [ 'readonly', 'filename' ], [], [ 'gitbranch' ] ]
+let g:lightline.active.right = [ [ 'readonly', 'filename' ], [ 'lineinfo' ], [ 'gitbranch' ] ]
 let g:lightline.component_function = {}
 let g:lightline.component_function.gitbranch = 'FugitiveHead'
 
@@ -197,8 +186,11 @@ let g:mkdx#settings = { 'highlight': { 'enable': 1 },
                       \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                       \ 'fold': { 'enable': 1 } }
 
-" NERDTree toggler
-nnoremap <leader>pv :NERDTreeToggle<CR>
+let g:floaterm_borderchars = ['─', '│', '─', '│', '╭', '╮', '╯', '╰']
+let g:floaterm_gitcommit = 'split' " Open git commits in a split
+let g:floaterm_autoclose = 1 " Close window if the job exits normally, otherwise stay it with messages like [Process exited 101]
+command! Vifm FloatermNew vifm
 
-" Shortcut for undo tree
-nnoremap <leader>u :UndotreeShow<CR>
+" Map keybindings for Floaterm & vifm
+nnoremap <silent> <space>pv :Vifm<CR>
+nnoremap <silent> <space>t :FloatermNew<CR>
