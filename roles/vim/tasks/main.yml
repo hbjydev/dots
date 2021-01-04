@@ -2,8 +2,21 @@
 - name: Install required packages
   become: true
   package:
-    name: fzf,git,vim,vifm
+    name: fzf,git,neovim,vifm
     state: installed
+
+- name: Install pip packages
+  become: true
+  pip:
+    name:
+      - neovim
+      - neovim-remote
+
+- name: Install neovim npm package
+  become: true
+  npm:
+    name: neovim
+    global: true
 
 - name: Check if Node.js is installed
   command: which node

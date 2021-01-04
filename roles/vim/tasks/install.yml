@@ -1,23 +1,24 @@
 ---
-- name: Ensure .vim/{autoload,bundle} directories exist
+- name: Ensure .config/nvim/{autoload,bundle} directories exist
   file:
     path: '{{ item }}'
     state: directory
     recurse: false
     mode: 0750
   with_items:
-    - '{{ vim_dir }}'
-    - '{{ vim_dir }}/autoload'
-    - '{{ vim_dir }}/bundle'
+    - '{{ vim_config_dir }}'
+    - '{{ vim_data_dir }}'
+    - '{{ vim_data_dir }}/autoload'
+    - '{{ vim_data_dir }}/bundle'
 
 - name: Ensure Pathogen is installed
   get_url:
-    dest: '{{ vim_dir }}/autoload/pathogen.vim'
+    dest: '{{ vim_data_dir }}/autoload/pathogen.vim'
     url: 'https://tpo.pe/pathogen.vim'
 
 - name: Deploy plugins
   git:
-    dest: '{{ vim_dir }}/bundle/{{ item.name }}'
+    dest: '{{ vim_data_dir }}/bundle/{{ item.name }}'
     repo: '{{ item.url }}'
     clone: true
     update: true

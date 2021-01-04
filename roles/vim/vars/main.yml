@@ -1,6 +1,7 @@
 ---
-vim_dir: '{{ ansible_env.HOME }}/.vim'
-vimrc: '{{ ansible_env.HOME }}/.vimrc'
+vim_config_dir: '{{ ansible_env.HOME }}/.config/nvim'
+vim_data_dir: '{{ ansible_env.HOME }}/.local/share/nvim/site'
+vimrc: '{{ vim_config_dir }}/init.vim'
 
 plugins:
 - name: vim-fugitive
@@ -25,3 +26,7 @@ plugins:
   url: https://github.com/mike-hearn/base16-vim-lightline
 - name: vim-floaterm
   url: https://github.com/voldikss/vim-floaterm
+- name: vim-nftables
+  url: https://github.com/nfnty/vim-nftables
+- name: firenvim
+  url: https://github.com/glacambre/firenvim
