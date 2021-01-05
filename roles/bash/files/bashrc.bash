@@ -45,7 +45,6 @@ esac
 # Include secrets (shhh)
 [[ -f $HOME/.secrets ]] && source $HOME/.secrets
 
-which gh 2> /dev/null
-if [ $? -eq 0 ]; then
+if command -v gh &> /dev/null; then
   eval "$(gh completion -s bash)"
 fi
