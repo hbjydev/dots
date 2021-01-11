@@ -2,8 +2,35 @@
 - name: Install required packages
   become: true
   package:
-    name: fzf,git,neovim,vifm
+    name:
+      - fzf
+      - git
+      - vifm
+      - ninja-build
+      - libtool
+      - autoconf
+      - automake
+      - cmake
+      - gcc
+      - gcc-c++
+      - make
+      - pkgconfig
+      - unzip
+      - patch
+      - python3-neovim
     state: installed
+
+- name: Unpacking neovim
+  unarchive:
+    copy: false
+    dest: /tmp/
+    src: "https://github.com/neovim/neovim/archive/master.tar.gz"
+
+- name: Installing neovim
+  become: true
+  shell: make && make install
+  args:
+    chdir: "/tmp/neovim-master"
 
 - name: Install pip packages
   become: true
@@ -26,5 +53,4 @@
   notify:
   - Install Node.js LTS
 
-- with_items: "{{ deploy_to_users }}"
-  include: install.yml
+- include: install.yml

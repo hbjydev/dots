@@ -30,3 +30,5 @@ plugins:
   url: https://github.com/nfnty/vim-nftables
 - name: firenvim
   url: https://github.com/glacambre/firenvim
+- name: vim-toml
+  url: https://github.com/cespare/vim-toml
