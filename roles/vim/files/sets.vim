@@ -55,3 +55,8 @@ let g:lightline.active.left = [ [ 'mode' ], [], [ 'cocstatus' ] ]
 let g:lightline.active.right = [ [ 'readonly', 'filename' ], [ 'lineinfo' ], [ 'gitbranch' ] ]
 let g:lightline.component_function = {}
 let g:lightline.component_function.gitbranch = 'FugitiveHead'
+
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 25

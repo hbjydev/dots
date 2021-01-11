@@ -10,34 +10,48 @@
 
 call plug#begin(stdpath('data') . '/plugged')
 
+" LSP & Completion plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'aca/completion-tabnine', { 'do': './install.sh' }
 Plug 'nvim-lua/lsp_extensions.nvim'
 
+" The best searching stuff around
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" Snippet support
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
+" Little to-do app
 Plug 'vuciv/vim-bujo'
 
+" Better undo support
 Plug 'mbbill/undotree'
+
+" Read man pages in Vim
 Plug 'vim-utils/vim-man'
 
+" Git Integration
 Plug 'tpope/vim-fugitive'
 
+" Language Specific
 Plug 'tweekmonster/gofmt.vim'
 Plug 'rust-lang/rust.vim'
 
+" Browser integration
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
+" Theming & appearance
 Plug 'chriskempson/base16-vim'
-
 Plug 'itchyny/lightline.vim'
 Plug 'nolo18/base16lightline'
+
+" Some good editing stuffs
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 call plug#end()
 
@@ -47,6 +61,7 @@ source ~/.config/nvim/sets.vim
 source ~/.config/nvim/augroups.vim
 source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/telescope.vim
+source ~/.config/nvim/limelight.vim
 
 "
 " keybinds
@@ -96,3 +111,6 @@ imap <silent> <Home> <C-O><Home>
 " open todo list
 nnoremap <leader>T :Todo g<cr>
 nnoremap <leader>t :Todo<cr>
+
+" netrw
+nnoremap <leader>pv :Sex!<cr>

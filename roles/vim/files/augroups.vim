@@ -1,5 +1,8 @@
 autocmd BufEnter * lua require'completion'.on_attach()
 
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e

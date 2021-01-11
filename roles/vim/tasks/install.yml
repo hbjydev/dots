@@ -21,6 +21,7 @@
   with_items:
     - 'init.vim'
     - 'augroups.vim'
+    - 'limelight.vim'
     - 'lsp.vim'
     - 'sets.vim'
     - 'telescope.vim'
