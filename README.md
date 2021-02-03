@@ -3,7 +3,7 @@
 My Ansible-based dotfiles repository. Built pretty nicely if I do say so
 myself.
 
-**Supported Linux Distributions:** Fedora, Arch Linux
+**Supported Linux Distributions:** Fedora
 
 ## Prerequisites
 

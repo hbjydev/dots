@@ -65,4 +65,11 @@ nvim_lsp.intelephense.setup{
     init_options = {licenceKey = vim.env.INTELEPHENSE_KEY},
     on_attach = on_attach
 }
+
+local pid = vim.fn.getpid()
+local omnisharp_bin = "/opt/omnisharp/OmniSharp.exe"
+require'lspconfig'.omnisharp.setup{
+    cmd = { "mono", omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+    ...
+}
 EOF

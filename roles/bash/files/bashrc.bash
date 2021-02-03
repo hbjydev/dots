@@ -5,15 +5,15 @@
 export PS1="\[\033[38;5;39m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;110m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;135m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;7m\]"
 
 # Set some general environment variables
-export EDITOR="vim"
+export EDITOR="nvim"
 export CLICOLOR="1"
 export EMAIL="hi@hbjy.dev"
 
 # Set terminal type for compatibility
-TERM=xterm-256color
+TERM=screen-256color
 
 # Append things to PATH
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin"
 
 # Include base16 shell theme
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -45,6 +45,17 @@ esac
 # Include secrets (shhh)
 [[ -f $HOME/.secrets ]] && source $HOME/.secrets
 
+# Add GitHub CLI completion if `gh` is installed
 if command -v gh &> /dev/null; then
   eval "$(gh completion -s bash)"
 fi
+
+# Allow use of GPG (YK) for SSH
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
+# Add Cargo's bin directory to PATH
+source "$HOME/.cargo/env"
+
+unset PROMPT_COMMAND
