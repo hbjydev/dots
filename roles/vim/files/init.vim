@@ -40,6 +40,7 @@ Plug 'tpope/vim-fugitive'
 " Language Specific
 Plug 'tweekmonster/gofmt.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'sheerun/vim-polyglot'
 
 " Browser integration
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -52,6 +53,12 @@ Plug 'nolo18/base16lightline'
 " Some good editing stuffs
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+
+" Mass commenting plugin
+Plug 'tpope/vim-commentary'
+
+" Teach me your ways, Vim!
+Plug 'takac/vim-hardtime'
 
 call plug#end()
 
@@ -114,3 +121,6 @@ nnoremap <leader>t :Todo<cr>
 
 " netrw
 nnoremap <leader>pv :Sex!<cr>
+
+" training myself not to use ESC to exit insert mode
+imap <ESC> <Nop>
