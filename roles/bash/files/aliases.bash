@@ -11,12 +11,14 @@ alias pgrep="pgrep --full"
 alias pkill="pkill --full"
 
 # Better LS
-alias l="ls -lahXF --group-directories-first"
+alias l="exa -lahF --group-directories-first"
+alias ls="exa"
 
 # nvim
-alias v="vim"
-alias vi="vim"
-alias nvim="vim"
+alias v="nvim"
+alias vi="nvim"
+alias vim="nvim"
+alias nvim="nvim"
 
 # rsync
 alias r="rsync -ra --info=progress2"

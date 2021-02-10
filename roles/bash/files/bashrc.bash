@@ -2,7 +2,8 @@
 [[ $- != *i* ]] && return
 
 # Set bash prompt
-export PS1="\[\033[38;5;39m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;110m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;135m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;7m\]"
+#export PS1="\[\033[38;5;9m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;81m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;7m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;7m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+export PS1="\[$(tput bold)$(tput setaf 1)\]\u\[$(tput sgr0)$(tput dim)$(tput setaf 7)\]@\[$(tput sgr0)$(tput setaf 2)\]\h\[$(tput sgr0)\] \[$(tput setaf 7)$(tput dim)\]\W\[$(tput sgr0)\] "
 
 # Set some general environment variables
 export EDITOR="nvim"
@@ -13,14 +14,7 @@ export EMAIL="hi@hbjy.dev"
 TERM=screen-256color
 
 # Append things to PATH
-export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin"
-
-# Include base16 shell theme
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-base16_atelier-cave
+export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:$HOME/.symfony/bin"
 
 # Set terminal window name
 case ${TERM} in
@@ -42,6 +36,9 @@ esac
 [[ -f /usr/share/fzf/key-bindings.bash ]] && source /usr/share/fzf/key-bindings.bash
 [[ -f /usr/share/fzf/completion.bash ]] && source /usr/share/fzf/completion.bash
 
+# Include Rust toolchain environment
+[[ -f $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
+
 # Include secrets (shhh)
 [[ -f $HOME/.secrets ]] && source $HOME/.secrets
 
@@ -59,3 +56,8 @@ gpgconf --launch gpg-agent
 source "$HOME/.cargo/env"
 
 unset PROMPT_COMMAND
+
+# Include autocompletion for molecule
+if command -v molecule &> /dev/null; then
+  eval "$(_MOLECULE_COMPLETE=source molecule)"
+fi

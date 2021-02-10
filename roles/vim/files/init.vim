@@ -46,7 +46,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 " Theming & appearance
-Plug 'chriskempson/base16-vim'
+Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'nolo18/base16lightline'
 
@@ -56,6 +56,12 @@ Plug 'junegunn/limelight.vim'
 
 " Mass commenting plugin
 Plug 'tpope/vim-commentary'
+
+" Linting & formatting shizz
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'graphql', 'html']
+  \ }
 
 " Teach me your ways, Vim!
 Plug 'takac/vim-hardtime'
@@ -86,8 +92,12 @@ vnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 
 " searcher
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>s <cmd>Telescope live_grep<cr>
+nnoremap <silent><C-p> :lua require('telescope.builtin').git_files()<CR>
+nnoremap <silent><leader>pf :lua require('telescope.builtin').find_files()<CR>
+nnoremap <silent><leader>pb :lua require('telescope.builtin').buffers()<CR>
+nnoremap <silent><leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep for > ") })<cr>
+nnoremap <silent><leader>pw :lua require('telescope.builtin').grep_string({ search = vim.fn.expand("<cword>") })<cr>
+nnoremap <silent><leader>vh :lua require('telescope.builtin').help_tags()<CR>
 
 " pane navigation with space + direction
 nnoremap <leader>h <C-w>h
@@ -124,3 +134,9 @@ nnoremap <leader>pv :Sex!<cr>
 
 " training myself not to use ESC to exit insert mode
 imap <ESC> <Nop>
+
+" remap prettier keybind
+nmap <Leader>py <Plug>(Prettier)
+
+" goyo
+nmap <silent> <leader>G :Goyo<CR>
