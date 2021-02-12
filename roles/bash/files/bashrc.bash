@@ -30,7 +30,11 @@ esac
 [[ -f $HOME/.aliases ]] && source $HOME/.aliases
 
 # Include Nix configuration
-[[ -f /etc/profile.d/nix.sh ]] && source /etc/profile.d/nix.sh
+if [[ -f /etc/profile.d/nix.sh ]]; then
+    . /etc/profile.d/nix.sh
+elif [[ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
+    . $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
 
 # Include FZF completion & bindings
 [[ -f /usr/share/fzf/key-bindings.bash ]] && source /usr/share/fzf/key-bindings.bash

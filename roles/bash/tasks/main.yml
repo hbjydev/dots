@@ -3,14 +3,14 @@
   become: true
   package:
     name: bash,bash-completion
-    state: installed
+    state: present
 
-- name: Install util-linux-user [Fedora]
+- name: Install util-linux-user
   become: true
   when: ansible_distribution == 'Fedora'
   package:
     name: util-linux-user
-    state: installed
+    state: present
 
 - name: Set Bash as this user's current shell
   become: true

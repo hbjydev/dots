@@ -42,3 +42,7 @@ alias fd="fd --hidden --exclude .git"
 
 # SSH for any terminal
 alias ssh="TERM=xterm-256color ssh"
+
+# Kubernetes Shtuff
+alias kc="kubectl"
+alias kcw="kubectl -o wide"
