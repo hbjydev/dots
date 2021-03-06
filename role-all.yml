@@ -1,0 +1,10 @@
+---
+- import_playbook: role-packages.yml
+- import_playbook: role-bash.yml
+- import_playbook: role-nodejs.yml
+- import_playbook: role-vim.yml
+- import_playbook: role-tmux.yml
+- import_playbook: role-gh_cli.yml
+- import_playbook: role-mpd.yml
+- import_playbook: role-fonts.yml
+- import_playbook: role-gnome.yml

@@ -1,0 +1,16 @@
+---
+- hosts: all
+  roles:
+    - role: luyz25.gnome_extensions
+      vars:
+        gnome_extension_ids:
+          - 19
+          - 615
+      tags:
+        - gnome
+        - gnome_extensions
+        - gui
+    - role: gnome
+      tags:
+        - gnome
+        - gui

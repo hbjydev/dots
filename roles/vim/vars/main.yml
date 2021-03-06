@@ -2,33 +2,3 @@
 vim_config_dir: '{{ ansible_env.HOME }}/.config/nvim'
 vim_data_dir: '{{ ansible_env.HOME }}/.local/share/nvim/site'
 vimrc: '{{ vim_config_dir }}/init.vim'
-
-plugins:
-- name: vim-fugitive
-  url: https://github.com/tpope/vim-fugitive
-- name: typescript-vim
-  url: https://github.com/leafgarland/typescript-vim
-- name: coc-nvim
-  url: https://github.com/neoclide/coc.nvim
-- name: fzf
-  url: https://github.com/junegunn/fzf
-- name: fzf-vim
-  url: https://github.com/junegunn/fzf.vim
-- name: editorconfig-vim
-  url: https://github.com/editorconfig/editorconfig-vim
-- name: goyo-vim
-  url: https://github.com/junegunn/goyo.vim
-- name: lightline-vim
-  url: https://github.com/itchyny/lightline.vim
-- name: base16-vim
-  url: https://github.com/chriskempson/base16-vim
-- name: 'base16-lightline'
-  url: https://github.com/mike-hearn/base16-vim-lightline
-- name: vim-floaterm
-  url: https://github.com/voldikss/vim-floaterm
-- name: vim-nftables
-  url: https://github.com/nfnty/vim-nftables
-- name: firenvim
-  url: https://github.com/glacambre/firenvim
-- name: vim-toml
-  url: https://github.com/cespare/vim-toml

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+    - role: bash
+      tags:
+        - bash
+        - shell
+        - cli
+        - terminal

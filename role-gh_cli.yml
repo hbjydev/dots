@@ -1,0 +1,10 @@
+---
+- hosts: all
+  roles:
+    - role: gh_cli
+      tags:
+        - gh_cli
+        - github
+        - shell
+        - cli
+        - terminal

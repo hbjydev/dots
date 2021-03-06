@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+    - role: nodejs
+      tags:
+        - nodejs
+        - nvm
+        - vim
+        - cli

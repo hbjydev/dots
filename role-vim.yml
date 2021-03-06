@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - role: vim
+      tags:
+        - vim
+        - cli
+        - editor

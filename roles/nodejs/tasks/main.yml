@@ -1,0 +1,25 @@
+---
+- name: Install NVM
+  warn: false
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: Create NVM bashrc
+  when: not install_remote
+  file:
+    src: "{{ role_path }}/files/nvm.bash"
+    dest: "{{ ansible_env.HOME }}/.config/bashrc.d/nvm.bash"
+    state: link
+
+- name: Create NVM bashrc
+  when: install_remote
+  copy:
+    src: "{{ role_path }}/files/nvm.bash"
+    dest: "{{ ansible_env.HOME }}/.config/bashrc.d/nvm.bash"
+    mode: 0644
+
+- name: Install Node.js
+  shell: >
+    bash -c "source ~/.bashrc; nvm install --lts"

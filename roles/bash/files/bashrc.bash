@@ -1,3 +1,12 @@
+#!/bin/bash
+
+# This file is the entrypoint for many of my other smaller bashrc files, stored
+# in .config/bashrc.d. This file is managed by Ansible, but is symlinked to
+# allow changes to be made without re-deploying the assocated playbooks.
+
+[[ -f $HOME/.config/bashrc.d/nvm.bash ]] && . $HOME/.config/bashrc.d/nvm.bash
+[[ -f $HOME/.config/bashrc.d/aliases.bash ]] && . $HOME/.config/bashrc.d/aliases.bash
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -26,9 +35,6 @@ case ${TERM} in
     ;;
 esac
 
-# Include any shell aliases
-[[ -f $HOME/.aliases ]] && source $HOME/.aliases
-
 # Include Nix configuration
 if [[ -f /etc/profile.d/nix.sh ]]; then
     . /etc/profile.d/nix.sh
@@ -52,12 +58,11 @@ if command -v gh &> /dev/null; then
 fi
 
 # Allow use of GPG (YK) for SSH
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
-
-# Add Cargo's bin directory to PATH
-source "$HOME/.cargo/env"
+if command -v gpg &> /dev/null; then
+  export GPG_TTY="$(tty)"
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  gpgconf --launch gpg-agent
+fi
 
 unset PROMPT_COMMAND
 

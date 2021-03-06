@@ -40,10 +40,8 @@
       - neovim-remote
 
 - name: Install neovim npm package
-  become: true
-  npm:
-    name: neovim
-    global: true
+  shell: >
+    source ~/.bashrc; npm install -g neovim
 
 - name: Check if Node.js is installed
   command: which node
