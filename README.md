@@ -18,5 +18,5 @@ The prerequisites to use this set of Dotfiles is as follows:
 
 ```sh
 # Run the bootstrapper playbook (including required env vars)
-$ ./bootstrap.sh
+$ cd ansible; ansible-playbook adhoc-init.yml; cd ..; ./script-install.sh
 ```
