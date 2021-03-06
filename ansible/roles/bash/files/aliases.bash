@@ -46,3 +46,8 @@ alias ssh="TERM=xterm-256color ssh"
 # Kubernetes Shtuff
 alias kc="kubectl"
 alias kcw="kubectl -o wide"
+
+# Cool macos-like xdg-open command
+if command -v xdg-open &>/dev/null; then
+  alias open="xdg-open"
+fi

@@ -14,8 +14,7 @@ Vagrant.configure("2") do |config|
 #  end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.verbose = "v"
-    ansible.playbook = "adhoc-init.yml"
+    ansible.playbook = "ansible/adhoc-init.yml"
     ansible.extra_vars = {
       install_remote: true
     }

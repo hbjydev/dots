@@ -1,6 +1,5 @@
 ---
 - name: Install NVM
-  warn: false
   shell: >
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh | bash
   args:
