@@ -12,12 +12,22 @@ copr_repos=(
     agriffis/neovim-nightly
 )
 
+repo_files=(
+    "https://download.docker.com/linux/fedora/docker-ce.repo"
+)
+
 install_packages=(
+    '@Development Tools'
     kitty
     gh
+    git
     neovim
     zsh
     google-chrome-stable
+    docker-ce
+    docker-ce-cli
+    containerd.io
+    docker-compose-plugin
 )
 
 ##
@@ -96,7 +106,16 @@ do
     $dnfcmd copr enable "$repo"
 done
 
+for repo in "${repo_files[@]}"
+do
+    $dnfcmd config-manager --add-repo "$repo"
+done
+
 $dnfcmd install "${install_packages[@]}"
+
+test -d "$HOME/.config/nvim" || git clone gh:hbjydev/init.lua "$HOME/.config/nvim"
+
+sudo usermod -aG docker "$USER"
 
 install_brew
 install_nix
