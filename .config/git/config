@@ -1,0 +1,32 @@
+[user]
+email = hayden@hbjy.dev
+name = Hayden Young
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDkhuhfzyg7R+O62XSktHufGmmhy6FNDi/NuPPJt7bI+
+
+[gpg]
+format = ssh
+
+[gpg "ssh"]
+program = "/opt/1Password/op-ssh-sign"
+
+[commit]
+gpgsign = true
+
+[init]
+defaultBranch = main
+
+[pull]
+rebase = true
+
+[push]
+autoSetupRemote = true
+
+[credential "https://gitlab.com"]
+helper = !/usr/bin/glab auth git-credential
+
+[credential "https://git.esptest.co.uk"]
+helper = !/usr/bin/glab auth git-credential
+
+[credential "https://github.com"]
+helper = !/usr/bin/gh auth git-credential
+
