@@ -28,6 +28,8 @@ install_packages=(
     docker-ce-cli
     containerd.io
     docker-compose-plugin
+    unzip
+    zip
 )
 
 ##
@@ -75,8 +77,18 @@ install_omzsh()
         KEEP_ZSHRC=yes RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     fi
 
-    if [[ "$(uname -s)" = "Linux" ]]; then
+    if [[ "$(uname -s)" = "Linux" && "$NO_ZSH_SET" != "1" ]]; then
         sudo usermod -s /bin/zsh "$USER"
+    fi
+
+    if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
+        mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    fi
+
+    if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
+        mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
     fi
 }
 
@@ -92,6 +104,18 @@ gpgcheck=1
 gpgkey=https://dl.google.com/linux/linux_signing_key.pub
 EOT
     fi
+}
+
+install_fonts()
+{
+    mkdir -p "$HOME/.local/share/fonts"
+
+    if [[ ! -f "$HOME/.local/share/fonts/Fira Code Regular Nerd Font Complete.ttf" ]]; then
+        curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip -o /tmp/FiraCode.zip
+        cd "$HOME/.local/share/fonts" && unzip /tmp/FiraCode.zip
+    fi
+
+    fc-cache -fv
 }
 
 dnfcmd="sudo dnf -y"
@@ -120,3 +144,4 @@ sudo usermod -aG docker "$USER"
 install_brew
 install_nix
 install_omzsh
+install_fonts
