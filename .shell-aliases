@@ -34,3 +34,5 @@ alias gb="git branch"
 alias gp="git pull"
 alias gpp="git push"
 alias gl="git log --pretty=oneline --abbrev-commit"
+
+alias ssh="TERM=xterm-256color ssh"
