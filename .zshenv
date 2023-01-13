@@ -54,3 +54,4 @@ if grep -qE "(Microsoft|WSL)" /proc/version &> /dev/null ; then
 fi
 
 if [ -e /home/hayden/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hayden/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+. "$HOME/.cargo/env"

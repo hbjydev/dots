@@ -15,7 +15,9 @@ test -r ~/.shell-aliases && source ~/.shell-aliases
 
 test -d "$HOME/.secrets" && source "$HOME/.secrets"
 test -d "$HOME/.gvm" && source "$HOME/.gvm/scripts/gvm"
-command -v direnv >/dev/null 2>&1 || eval "$(direnv hook zsh)"
+test -d "$HOME/.cargo" && source "$HOME/.cargo/env"
+test -d "$HOME/.krew" && export PATH="$PATH:$HOME/.krew/bin"
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
 if [[ -d "$HOME/.nvm" ]]; then
     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && \
