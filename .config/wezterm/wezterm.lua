@@ -88,6 +88,10 @@ local colors = is_dark and oxocarbon.dark or oxocarbon.light
 
 local function get_process(tab)
 	local process_icons = {
+        ["irssi"] = {
+            { Foreground = { Color = colors.base12 } },
+            { Text = wezterm.nerdfonts.fa_hashtag },
+        },
 		["docker"] = {
 			{ Foreground = { Color = colors.base11 } },
 			{ Text = wezterm.nerdfonts.linux_docker },
@@ -146,7 +150,6 @@ local function get_process(tab)
 		},
 	}
 
-    print(tab.active_pane.foreground_process_name)
 	local process_name = string.gsub(tab.active_pane.foreground_process_name, "(.*[/\\])(.*)", "%2")
 
 	return wezterm.format(
@@ -231,34 +234,39 @@ return {
     front_end = "WebGpu",
 
     colors = {
-        foreground = "#dde1e6",
-        background = "#161616",
-        cursor_bg = "#f2f4f8",
-        cursor_fg = "#393939",
-        cursor_border = "#f2f4f8",
-        selection_fg = "#f2f4f8",
-        selection_bg = "#525252",
+        foreground = colors.base04,
+        background = colors.base00,
+
+        cursor_bg = colors.base04,
+        cursor_fg = colors.base02,
+
+        selection_fg = colors.base05,
+        selection_bg = colors.base03,
+
         scrollbar_thumb = "#222222",
+
         split = "#444444",
+
         ansi = {
-            "#262626",
-            "#ff7eb6",
-            "#42be65",
-            "#82cfff",
-            "#33b1ff",
-            "#ee5396",
-            "#3ddbd9",
-            "#dde1e6",
+            colors.base02,
+            colors.base12,
+            colors.base13,
+            colors.base15,
+            colors.base11,
+            colors.base10,
+            colors.base08,
+            colors.base04,
         },
+
         brights = {
-            "#393939",
-            "#ff7eb6",
-            "#42be65",
-            "#82cfff",
-            "#33b1ff",
-            "#ee5396",
-            "#3ddbd9",
-            "#ffffff",
+            colors.base02,
+            colors.base12,
+            colors.base13,
+            colors.base15,
+            colors.base11,
+            colors.base10,
+            colors.base08,
+            colors.base05,
         },
     },
 
