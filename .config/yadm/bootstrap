@@ -13,7 +13,6 @@ copr_repos=(
 )
 
 repo_files=(
-    "https://download.docker.com/linux/fedora/docker-ce.repo"
 )
 
 install_packages=(
@@ -24,10 +23,6 @@ install_packages=(
     neovim
     zsh
     google-chrome-stable
-    docker-ce
-    docker-ce-cli
-    containerd.io
-    docker-compose-plugin
     unzip
     zip
 )
@@ -118,6 +113,19 @@ install_fonts()
     fc-cache -fv
 }
 
+install_docker()
+{
+    if ! rpm -q docker-ce &>/dev/null; then
+        $dnfcmd config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+        $dnfcmd install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        sudo systemctl enable --now docker.service
+    fi
+
+    if ! groups hayden | grep -q '\bdocker\b'; then
+        sudo usermod -aG docker "$USER"
+    fi
+}
+
 dnfcmd="sudo dnf -y"
 
 $dnfcmd update
@@ -139,9 +147,8 @@ $dnfcmd install "${install_packages[@]}"
 
 test -d "$HOME/.config/nvim" || git clone gh:hbjydev/init.lua "$HOME/.config/nvim"
 
-sudo usermod -aG docker "$USER"
-
 install_brew
 install_nix
 install_omzsh
+install_docker
 install_fonts
