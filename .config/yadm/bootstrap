@@ -13,6 +13,7 @@ copr_repos=(
 )
 
 repo_files=(
+    https://download.opensuse.org/repositories/home:TheLocehiliosan:yadm/Fedora_37/home:TheLocehiliosan:yadm.repo
 )
 
 install_packages=(
@@ -26,6 +27,7 @@ install_packages=(
     unzip
     zip
     'dnf-command(copr)'
+    yadm
 )
 
 ##
@@ -107,8 +109,15 @@ install_fonts()
     mkdir -p "$HOME/.local/share/fonts"
 
     if [[ ! -f "$HOME/.local/share/fonts/Fira Code Regular Nerd Font Complete.ttf" ]]; then
-        curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip -o /tmp/FiraCode.zip
-        cd "$HOME/.local/share/fonts" && unzip /tmp/FiraCode.zip
+        curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip -o /tmp/FiraCode.zip
+        cd "$HOME/.local/share/fonts" && unzip -o /tmp/FiraCode.zip
+        rm /tmp/FiraCode.zip
+    fi
+
+    if [[ ! -f "$HOME/.local/share/fonts/Mononoki Nerd Font Complete.ttf" ]]; then
+        curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Mononoki.zip -o /tmp/Mononoki.zip
+        cd "$HOME/.local/share/fonts" && unzip -o /tmp/Mononoki.zip
+        rm /tmp/Mononoki.zip
     fi
 
     fc-cache -fv
@@ -151,6 +160,16 @@ EOT
     fi
 }
 
+install_nvm()
+{
+    if [[ ! -d "$HOME/.nvm" ]]; then
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        nvm install --lts
+    fi
+}
+
 dnfcmd="sudo dnf -y"
 
 $dnfcmd update
@@ -178,3 +197,4 @@ install_omzsh
 install_docker
 install_fonts
 install_1password
+install_nvm

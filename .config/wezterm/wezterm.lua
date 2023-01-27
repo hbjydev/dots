@@ -201,7 +201,7 @@ return {
 
     max_fps = 120,
 
-    font = wezterm.font("FiraCode Nerd Font"),
+    font = wezterm.font("Mononoki Nerd Font"),
     font_size = 12,
 
     audible_bell = "Disabled",
