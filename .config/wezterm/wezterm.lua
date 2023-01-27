@@ -231,7 +231,7 @@ return {
     tab_max_width = 50,
     hide_tab_bar_if_only_one_tab = true,
 
-    front_end = "WebGpu",
+    --front_end = "WebGpu",
 
     colors = {
         foreground = colors.base04,
@@ -296,5 +296,4 @@ return {
 			format = "https://example.com/tasks/?t=$1",
 		},
 	},
-
 }

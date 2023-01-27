@@ -126,6 +126,30 @@ install_docker()
     fi
 }
 
+install_1password()
+{
+    if [[ ! -f /etc/yum.repos.d/1password.repo ]]; then
+        sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
+        sudo tee /etc/yum.repos.d/1password.repo > /dev/null <<EOT
+[1password]
+name=1Password Beta Channel
+baseurl=https://downloads.1password.com/linux/rpm/beta/\$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey="https://downloads.1password.com/linux/keys/1password.asc"
+EOT
+    fi
+
+    if ! rpm -q 1password &>/dev/null; then
+        $dnfcmd install 1password
+    fi
+
+    if ! rpm -q 1password-cli &>/dev/null; then
+        $dnfcmd install 1password-cli
+    fi
+}
+
 dnfcmd="sudo dnf -y"
 
 $dnfcmd update
@@ -152,3 +176,4 @@ install_nix
 install_omzsh
 install_docker
 install_fonts
+install_1password
