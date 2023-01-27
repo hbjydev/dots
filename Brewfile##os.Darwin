@@ -1,1 +1,3 @@
 brew "rustup"
+brew "awscli"
+brew "s3cmd"
