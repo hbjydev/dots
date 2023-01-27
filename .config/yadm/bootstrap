@@ -25,6 +25,7 @@ install_packages=(
     google-chrome-stable
     unzip
     zip
+    'dnf-command(copr)'
 )
 
 ##
