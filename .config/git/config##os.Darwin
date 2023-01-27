@@ -1,0 +1,52 @@
+[user]
+    email = hayden@hbjy.dev
+    name = Hayden Young
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDkhuhfzyg7R+O62XSktHufGmmhy6FNDi/NuPPJt7bI+
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	grep = auto
+	interactive = auto
+	status = auto
+
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+    gpgsign = true
+    verbose = true
+    template = ~/.gitmessage
+
+[rebase]
+	# Automatically stash before a rebase and unstash afterwards.
+	autoStash = true
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+    default = simple
+
+[credential "https://gitlab.com"]
+    helper = !/usr/bin/env glab auth git-credential
+
+[credential "https://git.esptest.co.uk"]
+    helper = !/usr/bin/env glab auth git-credential
+
+[credential "https://github.com"]
+    helper = !/usr/bin/env gh auth git-credential
+
+##
+## url aliases
+##
+[url "http://github.com/"]
+	insteadOf = "gh:"
