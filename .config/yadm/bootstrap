@@ -6,6 +6,7 @@
 
 remove_packages=(
     firefox
+    'libreoffice-*'
 )
 
 copr_repos=(
