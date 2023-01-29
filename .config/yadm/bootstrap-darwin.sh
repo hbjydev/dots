@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ./bootstrap-shared.sh
+. "$HOME/.config/yadm/bootstrap-shared.sh"
 
 install_brew
 install_nix
