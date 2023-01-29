@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
 
+brew "ansible"
 brew "awscli"
 brew "gcc"
 brew "gcc@10"
