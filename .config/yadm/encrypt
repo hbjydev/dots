@@ -1,0 +1,2 @@
+.aws/credentials*
+.kube/conf.d/**/*
