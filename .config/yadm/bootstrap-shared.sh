@@ -24,7 +24,10 @@ install_nix ()
       . "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
     fi
   }
-  command -v nix >/dev/null 2>&1 || install_nix_bin
+
+  if [[ ! "$(command -v nix)" ]]; then
+    install_nix_bin
+  fi
 
   if [ -f "$HOME/.config/nix/installed_packages" ]; then
     # This list created with `nix-env -qaPs|grep '^I'|awk '{print $2}' > ~/.config/nix/installed_packages`
