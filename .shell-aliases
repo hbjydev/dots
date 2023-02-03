@@ -38,3 +38,5 @@ alias gpp="git push"
 alias gl="git log --pretty=oneline --abbrev-commit"
 
 alias ssh="TERM=xterm-256color ssh"
+
+alias arma="/home/hayden/Repos/github.com/muttleyxd/arma3-unix-launcher/build/src/arma3-unix-launcher/arma3-unix-launcher"

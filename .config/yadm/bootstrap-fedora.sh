@@ -20,7 +20,6 @@ repo_files=()
 install_packages=(
     '@Development Tools'
     'dnf-command(copr)'
-    gh
     git
     google-chrome-stable
     kitty
