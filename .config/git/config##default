@@ -58,13 +58,10 @@
     default = simple
 
 [credential "https://gitlab.com"]
-    helper = !/usr/bin/glab auth git-credential
-
-[credential "https://git.esptest.co.uk"]
-    helper = !/usr/bin/glab auth git-credential
+    helper = !glab auth git-credential
 
 [credential "https://github.com"]
-    helper = !/usr/bin/gh auth git-credential
+    helper = !gh auth git-credential
 
 ##
 ## url aliases
