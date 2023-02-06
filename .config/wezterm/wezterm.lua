@@ -148,9 +148,17 @@ local function get_process(tab)
 			{ Foreground = { Color = colors.base14 } },
 			{ Text = wezterm.nerdfonts.dev_github_badge },
 		},
+        ["python"] = {
+            { Foreground = { Color = colors.base15 } },
+            { Text = wezterm.nerdfonts.mdi_language_python },
+        },
 	}
 
 	local process_name = string.gsub(tab.active_pane.foreground_process_name, "(.*[/\\])(.*)", "%2")
+
+    if string.find(process_name, "python3.") or string.find(process_name, "python3") then
+        process_name = "python"
+    end
 
 	return wezterm.format(
 		process_icons[process_name] or
