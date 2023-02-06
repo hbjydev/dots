@@ -184,15 +184,14 @@ wezterm.on("format-tab-title", function(tab)
 		{ Text = get_process(tab) },
 		{ Text = " " },
 		{ Text = get_current_working_dir(tab) },
-		{ Foreground = { Color = colors.base00 } },
+		{ Foreground = { Color = colors.base01 } },
 		{ Text = "  ▕" },
 	})
 end)
 
 wezterm.on("update-right-status", function(window)
 	window:set_right_status(wezterm.format({
-		{ Attribute = { Intensity = "Bold" } },
-		{ Text = wezterm.strftime(" %A, %d %B %Y %I:%M %p ") },
+		{ Text = wezterm.strftime("   %Y-%m-%d %H:%M:%S ") },
 	}))
 end)
 
@@ -231,10 +230,22 @@ return {
     tab_max_width = 50,
     hide_tab_bar_if_only_one_tab = true,
 
-    --front_end = "WebGpu",
-
     colors = {
-        foreground = colors.base04,
+        tab_bar = {
+            background = colors.base00,
+
+            active_tab = {
+                bg_color = colors.base01,
+                fg_color = colors.base04,
+                intensity = 'Bold',
+            },
+
+            inactive_tab = {
+                bg_color = colors.base00,
+                fg_color = colors.base03,
+            },
+        },
+
         background = colors.base00,
 
         cursor_bg = colors.base04,
