@@ -224,7 +224,7 @@ return {
     default_prog = { "zsh" },
 
     enable_scroll_bar = false,
-    tab_bar_at_bottom = true,
+    tab_bar_at_bottom = false,
     use_fancy_tab_bar = false,
     show_new_tab_button_in_tab_bar = false,
     tab_max_width = 50,
