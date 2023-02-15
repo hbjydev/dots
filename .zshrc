@@ -19,6 +19,8 @@ test -d "$HOME/.cargo" && source "$HOME/.cargo/env"
 test -d "$HOME/.krew" && export PATH="$PATH:$HOME/.krew/bin"
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
+test -f "$HOME/.config/op/plugins.sh" && source "$HOME/.config/op/plugins.sh"
+
 if [[ -d "$HOME/.nvm" ]]; then
     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && \
         printf %s "${HOME}/.nvm" || \

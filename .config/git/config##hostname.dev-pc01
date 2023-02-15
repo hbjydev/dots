@@ -57,11 +57,18 @@
     autoSetupRemote = true
     default = simple
 
+##
+## credential helpers
+##
+
 [credential "https://gitlab.com"]
     helper = !glab auth git-credential
 
 [credential "https://github.com"]
     helper = !gh auth git-credential
+
+[credential "https://git.esptest.co.uk"]
+	helper = !glab auth git-credential
 
 ##
 ## url aliases
@@ -74,6 +81,3 @@
 
 [url "http://git.esptest.co.uk/"]
 	insteadOf = "egl:"
-[credential "https://git.esptest.co.uk"]
-	helper = 
-	helper = !/home/linuxbrew/.linuxbrew/Cellar/glab/1.24.1/bin/glab auth git-credential

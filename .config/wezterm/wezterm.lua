@@ -206,6 +206,8 @@ end)
 return {
     default_cursor_style = "SteadyBar",
 
+    enable_kitty_graphics = true,
+
     max_fps = 120,
 
     font = wezterm.font("Mononoki Nerd Font"),
