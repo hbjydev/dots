@@ -1,0 +1,52 @@
+k9s:
+  refreshRate: 2
+  maxConnRetry: 5
+  enableMouse: false
+  headless: false
+  logoless: true
+  crumbsless: false
+  readOnly: false
+  noExitOnCtrlC: false
+  noIcons: false
+  skipLatestRevCheck: false
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: 60
+    fullScreenLogs: false
+    textWrap: false
+    showTime: false
+  currentContext: kur-k8s-prd-001-cd7595b
+  currentCluster: kur-k8s-prd-001-cd7595b
+  clusters:
+    kur-k8s-prd-001-cd7595b:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - flux-system
+        - secrets-system
+        - all
+        - default
+      view:
+        active: pods
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 80
+      warn: 70
+  screenDumpDir: /tmp/k9s-screens-hayden
