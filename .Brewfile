@@ -3,7 +3,6 @@ tap 'homebrew/cask'
 tap 'homebrew/core'
 tap 'wez/wezterm'
 
-brew 'ansible'
 brew 'awscli'
 brew 'bat'
 brew 'direnv'
