@@ -39,6 +39,11 @@ if [ -d $HOME/.nix-profile ]; then
   fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
 fi
 
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 license () {
   curl -L "api.github.com/licenses/$1" | jq -r .body > LICENSE
 }
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
