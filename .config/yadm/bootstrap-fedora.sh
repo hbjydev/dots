@@ -22,6 +22,7 @@ install_packages=(
     'dnf-command(copr)'
     git
     google-chrome-stable
+    httpie
     kitty
     neovim
     unzip
