@@ -20,4 +20,37 @@ if [ -f "$HOME/.shell-env.local" ]; then
   . "$HOME/.shell-env.local"
 fi
 
+test -d "$HOME/.secrets" && source "$HOME/.secrets"
+test -d "$HOME/.gvm" && source "$HOME/.gvm/scripts/gvm"
+test -d "$HOME/.cargo" && source "$HOME/.cargo/env"
+test -d "$HOME/.krew" && export PATH="$PATH:$HOME/.krew/bin"
+
+test -f "$HOME/.config/op/plugins.sh" && source "$HOME/.config/op/plugins.sh"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+if [[ -d "$HOME/.pyenv" ]]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
+fi
+
+if [[ -d "$HOME/.nvm" ]]; then
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && \
+    printf %s "${HOME}/.nvm" || \
+    printf %s "${XDG_CONFIG_HOME}/nvm")"
+
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+if [ -d "$BREW_PREFIX" ]; then
+  eval "$($BREW_PREFIX/bin/brew shellenv)"
+  fpath=($BREW_PREFIX/share/zsh/site-functions $fpath)
+fi
+
+if [ -d $HOME/.nix-profile ]; then
+  . $HOME/.nix-profile/etc/profile.d/nix.sh
+  fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
+fi
+
 umask 022

@@ -1,0 +1,74 @@
+[core]
+    pager = delta
+	excludesFile = ~/.gitignore
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+
+[user]
+    email = hayden.young@zoodigital.com
+    name = Hayden Young
+    signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHIQfUhEpC8YzPqF3bqQqwXDOCaPrWLe3pGca+1aNGEOhkgHyQg6THXLwzq3kIQWkp+/+kGGn0mqDGifiAWvd9jG6prre2ya5meissi4wy3RytA0t1zRYApFu8shW6VjAxnCL2+hyfpNLH4jMDxTS2B3G97MuG6obUg7V9rIwTZF4+1IFUILxck54mVLlQMI19CFVizoS+9350vtK3GcBIeLPcbHClgDAe3TZ6hwYSbdesqiQzRJ7P47U1UhXXRiBTJJnuRC4M0GfboLgc5X5VRMenDbtf/hsptg0Qu2Yhw4tD89kxwHoWVqqyPRMbOyVwtBjcoNSZIHFRLvdJaenp5LGTOzK7Wxj+Kx0Gt+8c0sI0Czj1NC8+e9VmCojSq18zc+ijmC46H1PfL4S5TOHeGGBwJi9j1VDjqZi1cyIbI5xDxc+/yZn4oelA6yuYSkVvuigAEg7YT+6L2Sx4FgLx9Aq/UldjsSLUUSUHmRz8pJviFYxwYhZuflT0fb+cMtANOF9yOz2t9ejA85aGlI2tZETXPCcrHencXZ9Z2gFzluy3/EvO/68FekCuslz1Wrub/EIdDaK4rI1ktg+dxlZ0/JL0+hIO5FwNXdBpt+e+SzSEkx9P/mW3fn92pBpcV/iiV0SafAxZ9OCmy+E0McwKSLB/dM/Pm1xYsBmZEwgztQ==
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	grep = auto
+	interactive = auto
+	status = auto
+
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+    gpgsign = true
+    verbose = true
+    template = ~/.gitmessage
+
+[rebase]
+	# Automatically stash before a rebase and unstash afterwards.
+	autoStash = true
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+    default = simple
+
+[credential "https://gitlab.com"]
+    helper = !/usr/bin/env glab auth git-credential
+
+[credential "https://gitlab.zoodigital.com"]
+    helper = !/usr/bin/env glab auth git-credential
+
+[credential "https://github.com"]
+    helper = !/usr/bin/env gh auth git-credential
+
+##
+## url aliases
+##
+[url "http://github.com/"]
+	insteadOf = "gh:"
