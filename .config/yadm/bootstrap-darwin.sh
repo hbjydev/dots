@@ -31,3 +31,7 @@ install_nvm
 # Now everything is installed, we can run any of our own stuff.
 defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+# https://developer.1password.com/docs/ssh/get-started#step-4-configure-your-ssh-or-git-client
+mkdir -p ~/.1password
+ln -s "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock" ~/.1password/agent.sock
