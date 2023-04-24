@@ -1,2 +1,3 @@
+.aws/config##hostname.UK-CORP-00655
 .aws/credentials*
 .kube/conf.d/**/*
