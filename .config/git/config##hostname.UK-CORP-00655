@@ -23,7 +23,7 @@
 [user]
     email = hayden.young@zoodigital.com
     name = Hayden Young
-    signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHIQfUhEpC8YzPqF3bqQqwXDOCaPrWLe3pGca+1aNGEOhkgHyQg6THXLwzq3kIQWkp+/+kGGn0mqDGifiAWvd9jG6prre2ya5meissi4wy3RytA0t1zRYApFu8shW6VjAxnCL2+hyfpNLH4jMDxTS2B3G97MuG6obUg7V9rIwTZF4+1IFUILxck54mVLlQMI19CFVizoS+9350vtK3GcBIeLPcbHClgDAe3TZ6hwYSbdesqiQzRJ7P47U1UhXXRiBTJJnuRC4M0GfboLgc5X5VRMenDbtf/hsptg0Qu2Yhw4tD89kxwHoWVqqyPRMbOyVwtBjcoNSZIHFRLvdJaenp5LGTOzK7Wxj+Kx0Gt+8c0sI0Czj1NC8+e9VmCojSq18zc+ijmC46H1PfL4S5TOHeGGBwJi9j1VDjqZi1cyIbI5xDxc+/yZn4oelA6yuYSkVvuigAEg7YT+6L2Sx4FgLx9Aq/UldjsSLUUSUHmRz8pJviFYxwYhZuflT0fb+cMtANOF9yOz2t9ejA85aGlI2tZETXPCcrHencXZ9Z2gFzluy3/EvO/68FekCuslz1Wrub/EIdDaK4rI1ktg+dxlZ0/JL0+hIO5FwNXdBpt+e+SzSEkx9P/mW3fn92pBpcV/iiV0SafAxZ9OCmy+E0McwKSLB/dM/Pm1xYsBmZEwgztQ==
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICdUGldjr+KGTEcc1XHlpNGRSvBeuPH2fBJz27+28Klw
 
 [color]
 	ui = auto

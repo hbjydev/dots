@@ -9,6 +9,8 @@ export USE_EDITOR="$EDITOR"
 export VISUAL=$EDITOR
 export PAGER=less
 
+export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+
 ##
 ## Pager
 ##
