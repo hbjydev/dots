@@ -8,3 +8,5 @@ export XDG_DATA_DIRS="$BREW_PREFIX/share:$XDG_DATA_DIRS"
 eval "$($BREW_PREFIX/bin/brew shellenv)"
 export PATH="$PATH:$HOME/.local/bin"
 if [[ -f "$HOME/.secrets" ]]; then source "$HOME/.secrets"; fi
+
+export REQUESTS_CA_BUNDLE="$HOME/.local/ca-bundle.pem"
