@@ -43,3 +43,5 @@ alias arma="/home/hayden/Repos/github.com/muttleyxd/arma3-unix-launcher/build/sr
 license () {
   curl -L "api.github.com/licenses/$1" | jq -r .body > LICENSE
 }
+
+alias pyenv='CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
