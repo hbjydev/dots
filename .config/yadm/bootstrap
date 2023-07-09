@@ -9,6 +9,9 @@ elif [[ "$system_type" = "Linux" ]]; then
     if [[ "$ID" = "fedora" ]]; then
         echo "Running Fedora"
         bash "$HOME/.config/yadm/bootstrap-fedora.sh"
+    elif [[ "$ID" = "arch" ]]; then
+        echo "Running Arch Linux"
+        bash "$HOME/.config/yadm/bootstrap-arch.sh"
     else
         echo "Unsupported Linux distro. Not bootstrapping."
         exit 1
